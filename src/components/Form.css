@@ -1,0 +1,53 @@
+.form {
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-control {
+  border: 1px solid var(--neutral-color-2);
+  border-radius: 4px;
+  padding: 1rem;
+
+}
+
+
+
+input {
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  font-weight: var(--fw-600);
+}
+
+.btn--submit {
+  background-color: var(--primary-color-2);
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: var(--fw-500);
+  width: 100%;
+  /* TEMP STYLES */
+  border-bottom: 2px solid hsl(154, 66%, 35%);
+  /* *********** */
+  padding-block: .95rem;
+}
+
+.terms {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--neutral-color-2);
+}
+
+.terms span {
+  color: var(--primary-color-1);
+  font-weight: var(--fw-600);
+}

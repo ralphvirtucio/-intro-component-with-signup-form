@@ -1,19 +1,29 @@
 body {
-  background-image: url(../images/bg-intro-mobile.png);
+  background-image: url('../images/bg-intro-mobile.png');
   background-color: var(--primary-color-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.pricing__plan {
-  background-color: var(--accent-color-1);
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup__content {
   color: #fff;
-  padding-block: 1rem;
-  padding-inline: 4rem;
-  margin-block-end: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 6px 3px rgba(0, 0, 0, 0.25);
   text-align: center;
+  /* TEMP STYLES */
+  padding-inline: 2rem;
+  /* ********** */
+  margin-block-end: 5rem;
+
 }
 
-.main {
-  padding-inline: 1rem;
+.main-heading {
+  margin-block-end: 2rem;
+
 }

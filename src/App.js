@@ -1,21 +1,22 @@
 import './App.css';
-import { Content } from './components/content/Content';
-import { Form } from './components/form/Form';
+import { CallToAction } from './components/CallToAction';
 
-function App() {
+const App = () => {
   return (
-    <div className='main'>
-      <Content />
-      <div className='form'>
-        <div className='pricing__plan'>
-          <p>
-            <strong>Try it free 7 days</strong> then $20/mo. thereafter
+    <>
+      <main className='signup'>
+        <section className='signup__content'>
+          <h1 className='main-heading'>Learn to code by watching others</h1>
+          <p className='signup__message'>
+            See how experienced developers solve problems in real-time. Watching
+            scripted tutorials is great, but understanding how developers think
+            is invaluable
           </p>
-        </div>
-        <Form />
-      </div>
-    </div>
+        </section>
+        <CallToAction />
+      </main>
+    </>
   );
-}
+};
 
 export default App;

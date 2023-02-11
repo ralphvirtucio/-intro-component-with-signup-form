@@ -1,0 +1,14 @@
+.signup__form {
+  padding-inline: 2rem;
+}
+
+.promo {
+  background-color: var(--accent-color-1);
+  color: #fff;
+  /* TEMP STYLES */
+  padding-block: 1.2rem;
+  /* ********** */
+  padding-inline: 4rem;
+  margin-block-end: 1rem;
+  text-align: center;
+}
