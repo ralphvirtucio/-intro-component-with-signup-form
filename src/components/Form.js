@@ -4,15 +4,18 @@ import './Form.css';
 import { Input } from './Input';
 export const Form = () => {
   const [firstName, setFirstName] = useState('');
+  const [isEmpty, setIsEmpty] = useState(false);
 
   const firstNameHandler = (e) => {
     setFirstName(e.target.value);
+    setIsEmpty(false);
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    // let obj = {
-    //   firstName,
-    // };
+
+    if (firstName === '') {
+      setIsEmpty(true);
+    }
 
     // Validation of input fields
   };
@@ -22,7 +25,11 @@ export const Form = () => {
       <Card classname='form'>
         <form onSubmit={submitHandler}>
           {/* TODO INPUT FIELD -- SHOULD I LIFT THE STATE? */}
-          <Input firstName={firstName} firstNameHandler={firstNameHandler} />
+          <Input
+            firstName={firstName}
+            firstNameHandler={firstNameHandler}
+            isEmpty={isEmpty}
+          />
           <button type='submit' className='btn--submit'>
             Claim your free trial
           </button>
