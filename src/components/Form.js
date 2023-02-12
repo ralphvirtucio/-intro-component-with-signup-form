@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Card } from '../UI/Card';
 import './Form.css';
+import { Input } from './Input';
 export const Form = () => {
   const [firstName, setFirstName] = useState('');
 
   const firstNameHandler = (e) => {
     setFirstName(e.target.value);
   };
-
   const submitHandler = (e) => {
     e.preventDefault();
     // let obj = {
@@ -21,15 +21,8 @@ export const Form = () => {
     <>
       <Card classname='form'>
         <form onSubmit={submitHandler}>
-          <div className='form-control'>
-            <input
-              type='text'
-              name='firstname'
-              placeholder='First Name'
-              value={firstName}
-              onChange={firstNameHandler}
-            />
-          </div>
+          {/* TODO INPUT FIELD -- SHOULD I LIFT THE STATE? */}
+          <Input firstName={firstName} firstNameHandler={firstNameHandler} />
           <button type='submit' className='btn--submit'>
             Claim your free trial
           </button>

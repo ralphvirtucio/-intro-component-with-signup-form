@@ -1,0 +1,33 @@
+.container__input {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.form-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--neutral-color-2);
+  border-radius: 4px;
+  padding: 1rem;
+
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  font-weight: var(--fw-600);
+}
+
+
+.error-message {
+  align-self: flex-end;
+  color: var(--primary-color-1);
+  font-style: italic;
+  font-size: .6rem;
+  font-weight: var(--fw-500);
+}
