@@ -1,4 +1,5 @@
 import './App.scss';
+import { Form } from './components/Form';
 import { Card } from './components/UI/Card';
 
 const App = () => {
@@ -13,11 +14,14 @@ const App = () => {
             is invaluable
           </p>
         </section>
-        <Card classes='pricing'>
-          <p>
-            <strong>Try it free 7 days</strong> then $20/mo. thereafter
-          </p>
-        </Card>
+        <section className='signup__content'>
+          <Card classes='pricing'>
+            <p>
+              <strong>Try it free 7 days</strong> then $20/mo. thereafter
+            </p>
+          </Card>
+          <Form />
+        </section>
       </main>
     </>
   );
