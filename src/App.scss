@@ -1,0 +1,31 @@
+body {
+  background-image: url('../images/bg-intro-mobile.png');
+  background-color: var(--primary-color-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  padding-inline: 1rem;
+}
+
+.intro {
+  &__content {
+    color: #fff;
+    text-align: center;
+    margin-block-end: 5rem;
+  }
+
+  &__heading {
+    margin-block-end: 2rem;
+  }
+}
+
+.pricing {
+  color: #fff;
+  background-color: var(--accent-color-1);
+  padding-block: 1.2rem;
+  padding-inline: 5rem;
+  text-align: center;
+}
