@@ -62,8 +62,15 @@ button[type='submit'] {
 
 .invalid-input {
   align-self: flex-end;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   color: var(--primary-color-1);
   font-style: italic;
-  font-weight: var(--fw-600);
+  font-weight: var(--fw-500);
+}
+
+.invalid-email {
+  input {
+    color: var(--primary-color-1);
+    font-weight: var(--fw-600);
+  }
 }

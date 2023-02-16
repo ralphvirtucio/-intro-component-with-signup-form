@@ -3,26 +3,26 @@ import './Input.scss';
 
 export const Input = (props) => {
   // const [enteredValue, setEnteredValue] = useState('');
+  // const [props.isValid, setprops.isValid] = useState(true);
 
   // const onChangeHandler = (e) => {
-  //   props.retrieveData(enteredValue);
   //   setEnteredValue(e.target.value);
   // };
 
   return (
     <>
       <div className='form-control-container'>
-        <div className={`form-control ${!props.valid ? 'invalid' : ''}`}>
+        <div className={`form-control ${!props.isValid ? 'invalid' : ''}`}>
           <input
             type={props.type}
             name={props.name}
-            placeholder={`${!props.valid ? '' : props.placeholder}`}
+            placeholder={`${!props.isValid ? '' : props.placeholder}`}
             // value={enteredValue}
             // onChange={onChangeHandler}
             value={props.value}
-            onChange={props.onchange}
+            onChange={props.onChange}
           />
-          {!props.valid && (
+          {!props.isValid && (
             <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
               <g fill='none' fillRule='evenodd'>
                 <circle fill='#FF7979' cx='12' cy='12' r='12' />
@@ -32,7 +32,7 @@ export const Input = (props) => {
             </svg>
           )}
         </div>
-        {!props.valid && (
+        {!props.isValid && (
           <p className='invalid-input'>{`${props.placeholder} cannot be empty`}</p>
         )}
       </div>
