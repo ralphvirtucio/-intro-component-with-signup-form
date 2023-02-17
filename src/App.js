@@ -1,4 +1,5 @@
 import './App.scss';
+import { Form } from './components/Form';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
               <strong>Try it free 7 days</strong> then $20/mo. thereafter
             </p>
           </div>
+          <Form />
         </div>
       </main>
     </div>
