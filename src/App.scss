@@ -1,67 +1,20 @@
 body {
   background-image: url('../images/bg-intro-mobile.png');
   background-color: var(--primary-color-1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media only screen and (min-width: 1024px) {
-    background-image: url('../images/bg-intro-desktop.png');
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  padding-inline: 1rem;
-  padding-block: 5rem;
-
-  @media only screen and (min-width: 1024px) {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-  }
-}
-
-.intro {
-  &__content {
-    color: #fff;
-    text-align: center;
-    margin-block-end: 5rem;
-    padding-inline: 1rem;
-
-    @media only screen and (min-width: 1024px) {
-      text-align: start;
-      margin-block-end: 0;
-      padding-inline: 0;
-      width: 30%;
-    }
-  }
-
-  &__heading {
+.left-content {
+  color: #fff;
+  text-align: center;
+  margin-block-end: 5rem;
+  h1 {
     margin-block-end: 2rem;
-
-    @media only screen and (min-width: 1024px) {
-      font-size: 3rem;
-      line-height: 1;
-    }
   }
 }
 
 .pricing {
-  color: #fff;
   background-color: var(--accent-color-1);
-  padding-block: 1.2rem;
-  padding-inline: 5rem;
-  text-align: center;
-}
-
-.signup__content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  @media only screen and (min-width: 1024px) {
-    width: 40%;
-  }
+  color: #fff;
 }
