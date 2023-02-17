@@ -72,13 +72,12 @@ export const Form = () => {
     console.log(password);
 
     if (
-      !isFirstNameValid &&
-      !isLastNameValid &&
-      !isEmailValid &&
+      !isFirstNameValid ||
+      !isLastNameValid ||
+      !isEmailValid ||
       !isPasswordValid
     ) {
       setFirstName('');
-      setLastName('');
       setLastName('');
       setPassword('');
     }
