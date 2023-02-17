@@ -12,6 +12,10 @@
   border: 1px solid var(--neutral-color-2);
   overflow: hidden;
   margin-block-end: 0.3rem;
+
+  & input:focus {
+    border: 1px solid red;
+  }
 }
 
 input {
