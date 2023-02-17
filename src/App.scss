@@ -9,7 +9,8 @@ body {
   display: flex;
   flex-direction: column;
   padding-inline: 1rem;
-  padding-block: 5rem;
+  padding-block-start: 5rem;
+  padding-block-end: 4rem;
 }
 
 .left-content {
@@ -17,17 +18,21 @@ body {
   text-align: center;
   margin-block-end: 5rem;
   h1 {
-    margin-block-end: 2rem;
+    margin-block-end: 1rem;
+  }
+
+  p {
+    padding-inline: 1rem;
   }
 }
 
 .pricing {
-  background-color: var(--accent-color-1);
   color: #fff;
   text-align: center;
   padding-block: 1rem;
   padding-inline: 4rem;
-  border-radius: 8px;
   margin-block-end: 1rem;
+  background-color: var(--accent-color-1);
+  border-radius: 8px;
   box-shadow: 0 5px 2px rgba(0, 0, 0, 0.2);
 }
