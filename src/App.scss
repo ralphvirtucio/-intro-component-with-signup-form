@@ -3,6 +3,13 @@ body {
   background-color: var(--primary-color-1);
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (min-width: 1024px) {
+    background-image: url('../images/bg-intro-desktop.png');
+  }
 }
 
 .main {
@@ -11,19 +18,47 @@ body {
   padding-inline: 1rem;
   padding-block-start: 5rem;
   padding-block-end: 4rem;
+
+  @media only screen and (min-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 .left-content {
   color: #fff;
   text-align: center;
   margin-block-end: 5rem;
+
+  @media only screen and (min-width: 1024px) {
+    text-align: start;
+    width: 35rem;
+  }
+
   h1 {
     margin-block-end: 1rem;
+
+    @media only screen and (min-width: 1024px) {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-block-end: 2rem;
+    }
   }
 
   p {
     padding-inline: 1rem;
+
+    @media only screen and (min-width: 1024px) {
+      padding-inline: 0;
+    }
   }
+}
+
+.right-content {
+  // @media only screen and (min-width: 1024px) {
+  //   flex: 1 1 50%;
+  // }
 }
 
 .pricing {
