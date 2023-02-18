@@ -1,31 +1,41 @@
 import { useState } from 'react';
+import { useInput } from './hooks/useInput';
 import './Form.scss';
 
 export const Form = () => {
+  const [
+    enteredName,
+    isValid,
+    invalidName,
+    onFirstNameChange,
+    onFirstNameBlur,
+    resetInput,
+    resetIsTouch,
+  ] = useInput((enteredName) => enteredName.trim() !== '');
   // State for the firstname value
-  const [firstName, setFirstName] = useState('');
-  const [isFirstNameTouched, setIsFirstNameTouched] = useState(false);
+  // const [firstName, setFirstName] = useState('');
+  // const [isFirstNameTouched, setIsFirstNameTouched] = useState(false);
 
   const [email, setEmail] = useState('');
   const [isEmailTouched, setIsEmailTouched] = useState(false);
 
-  const isFirstNameValid = firstName.trim() !== '';
-  const firstNameInputValid = !isFirstNameValid && isFirstNameTouched;
+  // const isFirstNameValid = firstName.trim() !== '';
+  // const firstNameInputValid = !isFirstNameValid && isFirstNameTouched;
 
   const isEmailValid = email.includes('@');
   const emailInputValid = !isEmailValid && isEmailTouched;
 
-  const firstNameHandler = (e) => {
-    setFirstName(e.target.value);
-  };
+  // const firstNameHandler = (e) => {
+  //   setFirstName(e.target.value);
+  // };
 
   const emailInputHandler = (e) => {
     setEmail(e.target.value);
   };
 
-  const firstNameBlurHandler = () => {
-    setIsFirstNameTouched(true);
-  };
+  // const firstNameBlurHandler = () => {
+  //   setIsFirstNameTouched(true);
+  // };
 
   const emailInputBlurHandler = () => {
     setIsEmailTouched(true);
@@ -34,22 +44,22 @@ export const Form = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    setIsFirstNameTouched(true);
+    // setIsFirstNameTouched(true);
+    resetIsTouch();
     setIsEmailTouched(true);
 
-    if (!isFirstNameValid && !isEmailValid) {
+    if (!invalidName && !isEmailValid) {
       return;
     }
 
-    console.log(firstName);
-    setFirstName('');
-    setIsFirstNameTouched(false);
+    resetInput();
+    // setIsFirstNameTouched(false);
 
     setEmail('');
     setIsEmailTouched(false);
   };
 
-  const firstNameClasses = firstNameInputValid
+  const firstNameClasses = invalidName
     ? 'input-control input-control__invalid'
     : 'input-control';
 
@@ -66,12 +76,12 @@ export const Form = () => {
               type='text'
               className='input'
               name='firstname'
-              placeholder={firstNameInputValid ? '' : 'First Name'}
-              value={firstName}
-              onChange={firstNameHandler}
-              onBlur={firstNameBlurHandler}
+              placeholder={invalidName ? '' : 'First Name'}
+              value={enteredName}
+              onChange={onFirstNameChange}
+              onBlur={onFirstNameBlur}
             />
-            {firstNameInputValid && (
+            {invalidName && (
               <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
                 <g fill='none' fillRule='evenodd'>
                   <circle fill='#FF7979' cx='12' cy='12' r='12' />
@@ -81,11 +91,11 @@ export const Form = () => {
               </svg>
             )}
           </div>
-          {firstNameInputValid && (
+          {invalidName && (
             <p className='invalid-message'>First Name cannot be empty</p>
           )}
         </div>
-        <div className='form-control'>
+        {/* <div className='form-control'>
           <div className={emailClasses}>
             <input
               type='email'
@@ -111,7 +121,7 @@ export const Form = () => {
           {emailInputValid && (
             <p className='invalid-message'>Looks like this is not an email</p>
           )}
-        </div>
+        </div> */}
         {/* <div className='form-control'>
           <div className='input-control'>
             <input
