@@ -10,6 +10,11 @@
   flex-direction: column;
   // gap: 1rem;
   // ********** //
+
+  @media only screen and (min-width: 1024px) {
+    padding-inline: 2rem;
+    padding-block: 2rem;
+  }
 }
 
 .form-control {
@@ -37,6 +42,12 @@
     flex: 1;
     font-weight: var(--fw-600);
     color: var(--neutral-color-1);
+  }
+}
+
+.email-invalid {
+  input::placeholder {
+    color: var(--primary-color-1);
   }
 }
 

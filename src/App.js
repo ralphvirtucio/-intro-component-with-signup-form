@@ -10,7 +10,7 @@ const App = () => {
           <p>
             See how experienced developers take problems in real-time. Watching
             scripted tutorials is great, but understanding how developers think
-            is invaluable
+            is invaluable.
           </p>
         </div>
 
