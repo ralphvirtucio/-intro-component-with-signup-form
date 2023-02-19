@@ -1,199 +1,141 @@
-import { useState } from 'react';
 import { useInput } from './hooks/useInput';
 import './Form.scss';
+import { Input } from './Input';
 
 export const Form = () => {
   const [
-    enteredName,
-    isValid,
-    invalidName,
+    enteredFirstName,
+    isValidFirstName,
+    invalidFirstName,
     onFirstNameChange,
     onFirstNameBlur,
-    resetInput,
-    resetIsTouch,
-  ] = useInput((enteredName) => enteredName.trim() !== '');
-  // State for the firstname value
-  // const [firstName, setFirstName] = useState('');
-  // const [isFirstNameTouched, setIsFirstNameTouched] = useState(false);
+    resetFirstNameInput,
+    resetIsFirstNameTouch,
+  ] = useInput((enteredFirstName) => enteredFirstName.trim() !== '');
 
-  const [email, setEmail] = useState('');
-  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [
+    enteredLastName,
+    isValidLastName,
+    invalidLastName,
+    onLastNameChange,
+    onLastNameBlur,
+    resetLastNameInput,
+    resetIsLastNameTouch,
+  ] = useInput((enteredLastName) => enteredLastName.trim() !== '');
 
-  // const isFirstNameValid = firstName.trim() !== '';
-  // const firstNameInputValid = !isFirstNameValid && isFirstNameTouched;
+  const [
+    enteredEmail,
+    isValidEmail,
+    invalidEmail,
+    onEmailChange,
+    onEmailBlur,
+    resetEmailInput,
+    resetIsEmailTouch,
+  ] = useInput(
+    (enteredEmail) =>
+      enteredEmail.includes('@') &&
+      enteredEmail.length > 3 &&
+      !enteredEmail.startsWith('@')
+  );
 
-  const isEmailValid = email.includes('@');
-  const emailInputValid = !isEmailValid && isEmailTouched;
+  const [
+    enteredPassword,
+    isValidPassword,
+    invalidPassword,
+    onPasswordChange,
+    onPasswordBlur,
+    resetPasswordInput,
+    resetIsPasswordTouch,
+  ] = useInput((enteredPassword) => enteredPassword.trim() !== '');
 
-  // const firstNameHandler = (e) => {
-  //   setFirstName(e.target.value);
-  // };
-
-  const emailInputHandler = (e) => {
-    setEmail(e.target.value);
-  };
-
-  // const firstNameBlurHandler = () => {
-  //   setIsFirstNameTouched(true);
-  // };
-
-  const emailInputBlurHandler = () => {
-    setIsEmailTouched(true);
-  };
-
+  let invalidPasswordMsg = 'Password cannot be empty';
   const submitHandler = (e) => {
     e.preventDefault();
 
-    // setIsFirstNameTouched(true);
-    resetIsTouch();
-    setIsEmailTouched(true);
+    resetIsFirstNameTouch();
+    resetIsLastNameTouch();
+    resetIsEmailTouch();
+    resetIsPasswordTouch();
 
-    if (!invalidName && !isEmailValid) {
+    if (
+      !isValidFirstName &&
+      !isValidLastName &&
+      !isValidEmail &&
+      !isValidPassword
+    ) {
       return;
     }
 
-    resetInput();
-    // setIsFirstNameTouched(false);
-
-    setEmail('');
-    setIsEmailTouched(false);
+    resetFirstNameInput();
+    resetLastNameInput();
+    resetEmailInput();
+    resetPasswordInput();
   };
 
-  const firstNameClasses = invalidName
+  const firstNameClasses = invalidFirstName
     ? 'input-control input-control__invalid'
     : 'input-control';
 
-  const emailClasses = emailInputValid
+  const lastNameClasses = invalidLastName
+    ? 'input-control input-control__invalid'
+    : 'input-control';
+
+  const emailClasses = invalidEmail
     ? 'input-control input-control__invalid email-invalid'
+    : 'input-control';
+
+  const passwordClasses = invalidPassword
+    ? 'input-control input-control__invalid'
     : 'input-control';
 
   return (
     <div>
       <form className='form' onSubmit={submitHandler} noValidate>
-        <div className='form-control'>
-          <div className={firstNameClasses}>
-            <input
-              type='text'
-              className='input'
-              name='firstname'
-              placeholder={invalidName ? '' : 'First Name'}
-              value={enteredName}
-              onChange={onFirstNameChange}
-              onBlur={onFirstNameBlur}
-            />
-            {invalidName && (
-              <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
-                <g fill='none' fillRule='evenodd'>
-                  <circle fill='#FF7979' cx='12' cy='12' r='12' />
-                  <rect fill='#FFF' x='11' y='6' width='2' height='9' rx='1' />
-                  <rect fill='#FFF' x='11' y='17' width='2' height='2' rx='1' />
-                </g>
-              </svg>
-            )}
-          </div>
-          {invalidName && (
-            <p className='invalid-message'>First Name cannot be empty</p>
-          )}
-        </div>
-        {/* <div className='form-control'>
-          <div className={emailClasses}>
-            <input
-              type='email'
-              className='input'
-              name='email'
-              placeholder={
-                emailInputValid ? 'email@example/com' : 'Email Address'
-              }
-              value={email}
-              onChange={emailInputHandler}
-              onBlur={emailInputBlurHandler}
-            />
-            {emailInputValid && (
-              <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
-                <g fill='none' fillRule='evenodd'>
-                  <circle fill='#FF7979' cx='12' cy='12' r='12' />
-                  <rect fill='#FFF' x='11' y='6' width='2' height='9' rx='1' />
-                  <rect fill='#FFF' x='11' y='17' width='2' height='2' rx='1' />
-                </g>
-              </svg>
-            )}
-          </div>
-          {emailInputValid && (
-            <p className='invalid-message'>Looks like this is not an email</p>
-          )}
-        </div> */}
-        {/* <div className='form-control'>
-          <div className='input-control'>
-            <input
-              type='text'
-              className='input'
-              name='lastname'
-              placeholder='Last Name'
-              // value={firstName}
-              // onChange={firstNameHandler}
-            />
-            {!isFirstNameValid && (
-              <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
-                <g fill='none' fillRule='evenodd'>
-                  <circle fill='#FF7979' cx='12' cy='12' r='12' />
-                  <rect fill='#FFF' x='11' y='6' width='2' height='9' rx='1' />
-                  <rect fill='#FFF' x='11' y='17' width='2' height='2' rx='1' />
-                </g>
-              </svg>
-            )}
-          </div>
-          {!isFirstNameValid && (
-            <p className='invalid-message'>Last Name cannot be empty</p>
-          )}
-        </div>
-        <div className='form-control'>
-          <div className='input-control'>
-            <input
-              type='email'
-              className='input'
-              name='email'
-              placeholder='Email Address'
-              // value={firstName}
-              // onChange={firstNameHandler}
-            />
-            {!isFirstNameValid && (
-              <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
-                <g fill='none' fillRule='evenodd'>
-                  <circle fill='#FF7979' cx='12' cy='12' r='12' />
-                  <rect fill='#FFF' x='11' y='6' width='2' height='9' rx='1' />
-                  <rect fill='#FFF' x='11' y='17' width='2' height='2' rx='1' />
-                </g>
-              </svg>
-            )}
-          </div>
-          {!isFirstNameValid && (
-            <p className='invalid-message'>Looks like this is not an email</p>
-          )}
-        </div>
-        <div className='form-control'>
-          <div className='input-control'>
-            <input
-              type='password'
-              className='input'
-              name='password'
-              placeholder='Password'
-              // value={firstName}
-              // onChange={firstNameHandler}
-            />
-            {!isFirstNameValid && (
-              <svg width='24' height='24' xmlns='http://www.w3.org/2000/svg'>
-                <g fill='none' fillRule='evenodd'>
-                  <circle fill='#FF7979' cx='12' cy='12' r='12' />
-                  <rect fill='#FFF' x='11' y='6' width='2' height='9' rx='1' />
-                  <rect fill='#FFF' x='11' y='17' width='2' height='2' rx='1' />
-                </g>
-              </svg>
-            )}
-          </div>
-          {!isFirstNameValid && (
-            <p className='invalid-message'>Password cannot be empty</p>
-          )}
-        </div> */}
+        <Input
+          type='text'
+          name='firstname'
+          placeholder='First Name'
+          invalidMsg='First Name cannot be empty'
+          enteredValue={enteredFirstName}
+          onChange={onFirstNameChange}
+          onBlur={onFirstNameBlur}
+          invalidValue={invalidFirstName}
+          inputClass={firstNameClasses}
+        />
+        <Input
+          type='text'
+          name='lastname'
+          placeholder='Last Name'
+          invalidMsg='Last Name cannot be empty'
+          enteredValue={enteredLastName}
+          onChange={onLastNameChange}
+          onBlur={onLastNameBlur}
+          invalidValue={invalidLastName}
+          inputClass={lastNameClasses}
+        />
+        <Input
+          type='email'
+          name='email'
+          placeholder='Email Address'
+          invalidMsg='Looks like this is not an email'
+          enteredValue={enteredEmail}
+          onChange={onEmailChange}
+          onBlur={onEmailBlur}
+          invalidValue={invalidEmail}
+          inputClass={emailClasses}
+          invalidPlaceholder={enteredEmail}
+        />
+        <Input
+          type='password'
+          name='password'
+          placeholder='Password'
+          invalidMsg={invalidPasswordMsg}
+          enteredValue={enteredPassword}
+          onChange={onPasswordChange}
+          onBlur={onPasswordBlur}
+          invalidValue={invalidPassword}
+          inputClass={passwordClasses}
+        />
 
         <button className='btn--submit'>Claim your free trial</button>
         <p className='terms-agreement'>

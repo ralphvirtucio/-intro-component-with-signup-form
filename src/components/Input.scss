@@ -1,0 +1,40 @@
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-block-end: 1rem;
+}
+
+.input-control {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid rgba(185, 182, 211, 0.4);
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  &__invalid {
+    border: 2px solid var(--primary-color-1);
+  }
+
+  input {
+    outline: none;
+    border: none;
+    flex: 1;
+    font-weight: var(--fw-600);
+    color: var(--neutral-color-1);
+  }
+}
+
+.email-invalid {
+  input::placeholder {
+    color: var(--primary-color-1);
+  }
+}
+
+.invalid-message {
+  color: var(--primary-color-1);
+  font-style: italic;
+  font-size: 0.75rem;
+  align-self: flex-end;
+}
